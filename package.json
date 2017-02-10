@@ -1,0 +1,22 @@
+{
+  "name": "omebe",
+  "version": "1.0.0",
+  "description": "A canvas and web socket app for collaboration",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shahrodkh/omebe.git"
+  },
+  "author": "Bita, Fred, and Shahrod",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shahrodkh/omebe/issues"
+  },
+  "homepage": "https://github.com/shahrodkh/omebe#readme",
+  "dependencies": {
+    "paper": "^0.10.2"
+  }
+}
