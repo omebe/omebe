@@ -1,22 +1,17 @@
 {
-  "name": "omebe",
+  "name": "canvas",
   "version": "1.0.0",
-  "description": "A canvas and web socket app for collaboration",
-  "main": "index.js",
+  "description": "http://code-and.coffee/post/2015/collaborative-drawing-canvas-node-websocket/",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/shahrodkh/omebe.git"
-  },
-  "author": "Bita, Fred, and Shahrod",
+  "author": "bdj",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/shahrodkh/omebe/issues"
-  },
-  "homepage": "https://github.com/shahrodkh/omebe#readme",
   "dependencies": {
-    "paper": "^0.10.2"
+    "express": "^4.14.1",
+    "nodemon": "^1.11.0",
+    "socket.io": "^1.7.2"
   }
 }
