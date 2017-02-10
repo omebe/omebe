@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Canvas tutorial</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      function draw(){
+        $(document).ready(function() {
+        var canvas = document.getElementById('tutorial');
+        if (canvas.getContext){
+          var ctx = canvas.getContext('2d');
+        }
+        });
+      }
+    </script>
+    <style type="text/css">
+      body { background-color: coral; }
+      canvas {
+        border: 1px solid black;
+        background-color: white;
+        }
+    </style>
+  </head>
+  <body onload="draw();">
+    <canvas id="tutorial" width="500" height="500"></canvas>
+  </body>
+</html>
