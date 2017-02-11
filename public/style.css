@@ -5,11 +5,17 @@
 body, html{
   width: 100%;
   height: 100%;
-  background-color: coral;
+  background-color: hsla(210, 34%, 18%, 0.63);
 }
 #drawing {
   display: block;
   overflow: scroll;
-  background-color: antiquewhite;
+  background-color: hsl(34, 37%, 94%);
+}
+#toolbox {
+  padding: 10px;
 }
 
+.colorBtn {
+  margin-left: 22px;
+}
