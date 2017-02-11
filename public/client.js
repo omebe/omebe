@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
     pos_prev: false
   };
 
+
+
   // get canvas element and create context
   const canvas = document.getElementById('drawing');
   const lineSlider = document.getElementById('lineSize');
@@ -25,13 +27,15 @@ document.addEventListener("DOMContentLoaded", () => {
   // initialize pen color
   let lineColor = '#000000'
 
+  canvas.style.cursor = "crosshair";
+
   // register mouse event handlers
   canvas.onmousedown = (e) => { mouse.click = true; };
   canvas.onmouseup = (e) => { mouse.click = false; };
 
   canvas.onmousemove = (e) => {
     const x = window.scrollX;
-    mouse.pos.x = e.clientX + x;
+    mouse.pos.x = e.clientX + x - rect.left;
     
     const y = window.scrollY;
     mouse.pos.y = e.clientY + y - rect.top;
@@ -74,5 +78,27 @@ document.addEventListener("DOMContentLoaded", () => {
     mouse.pos_prev = { x: mouse.pos.x, y: mouse.pos.y };
     setTimeout(mainLoop, 5);
   }
+
+  var rangeSlider = function(){
+    var slider = $('.range-slider'),
+        range = $('.range-slider__range'),
+        value = $('.range-slider__value');
+      
+    slider.each(function(){
+
+      value.each(function(){
+        var value = $(this).prev().attr('value');
+        $(this).html(value);
+      });
+
+      range.on('input', function(){
+        $(this).next(value).html(this.value);
+      });
+    });
+  };
+
+  rangeSlider();
+
+
   mainLoop();
 });
