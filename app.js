@@ -21,8 +21,6 @@ io.on('connection', function (socket) {
   
    // send drawing history to the new client
    for (var i in line_history) {
-    //  console.log(line_history[i]);
-     
       socket.emit('draw_line', { line: line_history[i] } );
    }
 
@@ -30,6 +28,7 @@ io.on('connection', function (socket) {
    socket.on('draw_line', function (data) {
       // add received line to history 
       line_history.push(data.line);
+           console.log(line_history);
       // send line to all clients
       io.emit('draw_line', { line: data.line });
    });

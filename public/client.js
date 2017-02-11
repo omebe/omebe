@@ -18,9 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
    canvas.onmouseup = (e) => { mouse.click = false; };
 
    canvas.onmousemove = (e) => {
-      // normalize mouse position to range 0.0 - 1.0
-      // mouse.pos.x = e.clientX / width;
-      // mouse.pos.y = e.clientY / height;
       mouse.pos.x = e.clientX;
       mouse.pos.y = e.clientY;
       mouse.move = true;
@@ -30,14 +27,15 @@ document.addEventListener("DOMContentLoaded", () => {
    socket.on('draw_line', (data) => {
       let line = data.line;
       context.beginPath();
-      // context.moveTo(line[0].x * width, line[0].y * height);
-      // context.lineTo(line[1].x * width, line[1].y * height);
+
       //  set line width
       context.lineWidth=10;
       // set end cap of line 'round' 'square' 'butt'
       context.lineCap='round';
+
       context.moveTo(line[0].x, line[0].y);
       context.lineTo(line[1].x, line[1].y);
+      context.strokeStyle="#FF0000";
       context.stroke();
    });
    
