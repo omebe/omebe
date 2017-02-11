@@ -1,20 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
-   let mouse = { 
+   let mouse = {
       click: false,
       move: false,
       pos: {x:0, y:0},
       pos_prev: false
    };
+
    // get canvas element and create context
    let canvas  = document.getElementById('drawing');
    let context = canvas.getContext('2d');
-   let width   = window.innerWidth;
-   let height  = window.innerHeight;
+   const width   = canvas.width;
+   const height  = canvas.height;
    let socket  = io.connect();
-
-   // set canvas to full browser width/height
-  //  canvas.width = width;
-  //  canvas.height = height;
 
    // register mouse event handlers
    canvas.onmousedown = (e) => { mouse.click = true; };
@@ -27,16 +24,22 @@ document.addEventListener("DOMContentLoaded", () => {
    };
 
    // draw line received from server
-	socket.on('draw_line', (data) => {
+   socket.on('draw_line', (data) => {
       let line = data.line;
       context.beginPath();
+
+      //  set line width
+      context.lineWidth=10;
+      // set end cap of line 'round' 'square' 'butt'
+      context.lineCap='round';
+
       context.moveTo(line[0].x, line[0].y);
       context.lineTo(line[1].x, line[1].y);
       context.strokeStyle="#FF0000";
       context.stroke();
    });
    
-   // main loop, running every 25ms
+   // main loop, running every 5ms
    function mainLoop() {
       // check if the user is drawing
       if (mouse.click && mouse.move && mouse.pos_prev) {
@@ -45,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
          mouse.move = false;
       }
       mouse.pos_prev = {x: mouse.pos.x, y: mouse.pos.y};
-      setTimeout(mainLoop, 1);
+      setTimeout(mainLoop, 5);
    }
    mainLoop();
 });
