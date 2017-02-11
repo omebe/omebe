@@ -6,9 +6,9 @@ const socketio = require('socket.io')
 let server = http.createServer(app);
 let io = socketio.listen(server);
 server.listen(8080);
+
 app.use(express.static(__dirname + '/public'));
 console.log("Server running on http://localhost:8080");
-
 
 ///////////////////////////////////////////
 
@@ -20,7 +20,7 @@ io.on('connection', function (socket) {
   
    // send drawing history to the new client
    for (var i in line_history) {     
-      socket.emit('draw_line', { line: line_history[i] } );
+      socket.emit('draw_line', { line: line_history[i] });
    }
 
    // add handler for message type "draw_line".
