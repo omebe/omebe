@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Canvas Draw Test</title>
+  <title>OMEBE</title>
   <meta charset="utf-8">
   <link rel="stylesheet" href="style.css" />
   <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
@@ -14,24 +14,26 @@
 </head>
 
 <body>
-  <h1>OMEBE BOARD</h1>
   <div id='board-container'>
     <div id='toolbox'>
+      <div class="btn-container">
+        <button id="color-picker" ; class="jscolor {valueElement:null,value:'rgb(69, 139, 173)'}">
+      </button>
+        <button value="black" ; class="colorBtn">
+      </button>
+        <button value="fuchsia" ; class="colorBtn">
+      </button>
+        <button value="LightSeaGreen" ; class="colorBtn">
+      </button>
+        <button value="Navy" ; class="colorBtn">
+      </button>
+        <button value="FireBrick" ; class="colorBtn">
+      </button>
+        <button value="hsl(34, 37%, 94%)" ; class="colorBtn">
+      </button>
+      <span class="stretch"></span>
+      </div>
 
-      <button id="color-picker" ; class="jscolor {valueElement:null,value:'rgb(69, 139, 173)'}" style="width:50px; height:50px;">
-      </button>
-      <button value="black"; class="colorBtn" style="width:50px; height:50px;">
-      </button>
-      <button value="fuchsia"; class="colorBtn" style="width:50px; height:50px;">
-      </button>
-      <button value="LightSeaGreen"; class="colorBtn" style="width:50px; height:50px;">
-      </button>
-      <button value="Navy"; class="colorBtn" style="width:50px; height:50px;">
-      </button>
-      <button value="FireBrick"; class="colorBtn" style="width:50px; height:50px;">
-      </button>
-      <button value="hsl(34, 37%, 94%)"; class="colorBtn" style="width:50px; height:50px;">
-      </button>
 
       <div class="range-slider">
         <input id="lineSize" class="range-slider__range" type="range" value="5" min="1" max="30">
