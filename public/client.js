@@ -6,12 +6,24 @@ document.addEventListener("DOMContentLoaded", () => {
     pos_prev: false
   };
 
+  // let penColor = '#d6008b'; // pink
+  let myArr = ['#FF0000', '#888888', '#1200d6']
+  // let penColor = myArr[Math.floor(Math.random() * 3)];
+  let penColor = '#000000'
+
+
   // get canvas element and create context
   let canvas = document.getElementById('drawing');
   let context = canvas.getContext('2d');
   const width = canvas.width;
   const height = canvas.height;
   let socket = io.connect();
+  let blueButton = document.getElementById('blue');
+
+  blueButton.onclick = (e) => {
+    console.log("blue button click!");
+    penColor = 'blue'
+  }
 
   // register mouse event handlers
   canvas.onmousedown = (e) => { mouse.click = true; };
@@ -35,7 +47,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     context.moveTo(line[0].x, line[0].y);
     context.lineTo(line[1].x, line[1].y);
-    context.strokeStyle = "#FF0000";
+    context.strokeStyle = data.line[2];
+
+    console.log(data.lineColor)
+    // context.strokeStyle=penColor.lineColor;
+    // context.strokeStyle="#FF0000";
     context.stroke();
   });
 
@@ -44,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // check if the user is drawing
     if (mouse.click && mouse.move && mouse.pos_prev) {
       // send line to to the server
-      socket.emit('draw_line', { line: [mouse.pos, mouse.pos_prev] });
+      socket.emit('draw_line', { line: [mouse.pos, mouse.pos_prev, penColor]});
       mouse.move = false;
     }
     mouse.pos_prev = { x: mouse.pos.x, y: mouse.pos.y };
@@ -52,3 +68,5 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   mainLoop();
 });
+
+
