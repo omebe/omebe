@@ -32,6 +32,10 @@ document.addEventListener("DOMContentLoaded", () => {
       context.beginPath();
       // context.moveTo(line[0].x * width, line[0].y * height);
       // context.lineTo(line[1].x * width, line[1].y * height);
+      //  set line width
+      context.lineWidth=10;
+      // set end cap of line 'round' 'square' 'butt'
+      context.lineCap='round';
       context.moveTo(line[0].x, line[0].y);
       context.lineTo(line[1].x, line[1].y);
       context.stroke();
