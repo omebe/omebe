@@ -9,33 +9,33 @@ document.addEventListener("DOMContentLoaded", () => {
   // get canvas element and create context
   const canvas = document.getElementById('drawing');
   const lineSlider = document.getElementById('lineSize');
-  const blueButton = document.getElementById('blue');
+  const colorPick = document.getElementById('color-picker');
 
   const context = canvas.getContext('2d');
   const width = canvas.width;
   const height = canvas.height;
   const socket = io.connect();
+  const rect = canvas.getBoundingClientRect();
+  console.log(rect);
+
 
   let randomColor = ['#FF0000', '#888888', '#1200d6']
   // let penColor = randomColor[Math.floor(Math.random() * 3)];
 
+  // initialize pen color
   let lineColor = '#000000'
-  let lineWidth = lineSlider.value;
-
-
-  // TODO: make this function dynamic
-  blueButton.onclick = (e) => {
-    console.log("blue button click!");
-    lineColor = 'blue'
-  }
 
   // register mouse event handlers
   canvas.onmousedown = (e) => { mouse.click = true; };
   canvas.onmouseup = (e) => { mouse.click = false; };
 
   canvas.onmousemove = (e) => {
-    mouse.pos.x = e.clientX;
-    mouse.pos.y = e.clientY;
+    const x = window.scrollX;
+    mouse.pos.x = e.clientX + x;
+    
+    const y = window.scrollY;
+    mouse.pos.y = e.clientY + y - rect.top;
+
     mouse.move = true;
   };
 
@@ -64,6 +64,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (mouse.click && mouse.move && mouse.pos_prev) {
 
       lineWidth = lineSlider.value;
+      lineColor = colorPick.style.backgroundColor.toString();
+
 
       // send line to to the server
       socket.emit('draw_line', { line: [mouse.pos, mouse.pos_prev, lineColor, lineWidth] });

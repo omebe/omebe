@@ -5,14 +5,27 @@
   <title>Canvas Draw Test</title>
   <meta charset="utf-8">
   <link rel="stylesheet" href="style.css" />
+  <script src="jscolor.min.js"></script>
   <script src="socket.io/socket.io.js"></script>
   <script src="client.js"></script>
 </head>
 
 <body>
-  <canvas id="drawing" height='800px' width='800px'></canvas>
-  <button id='blue'>Blue</button>
-  <input id='lineSize' type="range" min='1' max='30' value='5'>
+  <h1>OMEBE BOARD</h1>
+  <div id='board-container'>
+    <div id='toobox'>
+      <!--<button id='blue'>Blue</button>-->
+      <button
+        id="color-picker";
+        class="jscolor {valueElement:null,value:'66ccff'}"
+        style="width:50px; height:50px;">
+      </button>
+      <input id='lineSize' type="range" min='1' max='30' value='5'>
+    </div>
+    <div id='canvas-container'>
+      <canvas id="drawing" height='2000px' width='2000px'></canvas>
+    </div>
+  </div>
 </body>
 
 </html>
